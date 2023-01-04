@@ -1,0 +1,78 @@
+<% include header %>
+
+<script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+
+<div class="container bump-me">
+  <div class="body-content">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">C5ISR Session</h3>
+      </div>
+      <div class="panel-body">
+        <div id="streams">
+          <div id="publisher" class="focus"></div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <form class="archive-options">
+          <fieldset class="archive-options-fields">
+            <div class="form-group">
+              <p class="help-block">Avilable Rcording Options:</p>
+              <label class="checkbox-inline">
+                <input type="checkbox" name="hasAudio" checked /> Audio
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" name="hasVideo" checked /> Video
+              </label>
+            </div>
+
+            <div class="form-group">
+              <p class="help-block">Output Mode:</p>
+              <label class="radio-inline">
+                <input
+                  type="radio"
+                  name="outputMode"
+                  value="composed"
+                  checked
+                />
+                Composed
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="outputMode" value="individual" />
+                Individual
+              </label>
+            </div>
+          </fieldset>
+        </form>
+        <button class="btn btn-danger start" disabled>Start archiving</button>
+        <button class="btn btn-success stop">Stop archiving</button>
+        <button class="btn toggle-layout">Toggle layout</button>
+        <button class="btn btn-success info" onclick="publishAudioOnly()"> Audio OR Video </button>
+      </div>
+    </div>
+  </div>
+<script>
+  let publishMyVideoFootage = true;
+        const publishAudioOnly = () => {
+        if (publishMyVideoFootage) {
+          publishMyVideoFootage = false;
+          publisher.publishVideo(false);
+        } else {
+          publishMyVideoFootage = true;
+          publisher.publishVideo(true);
+        }
+      };
+</script>
+  <script>
+    var sessionId = "<%= sessionId %>";
+    var apiKey = "<%= apiKey %>";
+    var token = "<%= token %>";
+    var focusStreamId = "<%= focusStreamId || '' %>";
+    var layout = "<%= layout %>";
+  </script>
+  <script src="/js/host.js"></script>
+  <script
+    type="text/javascript"
+    src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js"
+  ></script>
+</div>
