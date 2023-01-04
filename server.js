@@ -8,7 +8,7 @@ var opentok;
 var apiKey = "47637551";
 var apiSecret = "1a134dd640d912d0d5c4da2c3db264f642af46d7";
 
-const MY_PORT = process.env.PORT || 3000;
+const MY_PORT = process.env.PORT || 4000;
 
 // Verify that the API Key and API Secret are defined
 if (!apiKey || !apiSecret) {
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({
 // Starts the express app
 function init() {
   app.listen(MY_PORT, function () {
-    console.log('You\'re app is now ready at http://localhost:3000/');
+    console.log('You\'re app is now ready at http://localhost:4000/');
   });
 }
 
